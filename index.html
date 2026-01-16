@@ -1,0 +1,530 @@
+<!DOCTYPE html>
+<html lang="tr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>⭐!Mutlu Yıllar Sevgilim!❤</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(135deg, #ff9a9e 0%, #fad0c4 100%);
+            margin: 0;
+            padding: 0;
+            color: #333;
+            text-align: center;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        header {
+            padding: 40px 0;
+            position: relative;
+        }
+
+        h1 {
+            font-size: 3em;
+            margin-bottom: 10px;
+            color: #d23669;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .subtitle {
+            font-size: 1.5em;
+            margin-bottom: 30px;
+            color: #666;
+        }
+
+        .heart {
+            color: #d23669;
+            font-size: 1.5em;
+            animation: pulse 1.5s infinite;
+        }
+
+        @keyframes pulse {
+            0% {
+                transform: scale(1);
+            }
+
+            50% {
+                transform: scale(1.3);
+            }
+
+            100% {
+                transform: scale(1);
+            }
+        }
+
+        .memory-box {
+            background: rgba(255, 255, 255, 0.8);
+            border-radius: 15px;
+            padding: 25px;
+            margin: 30px 0;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s;
+        }
+
+        .memory-box:hover {
+            transform: translateY(-10px);
+        }
+
+        .photo-frame {
+            width: 200px;
+            height: 200px;
+            border: 10px solid white;
+            border-radius: 50%;
+            margin: 0 auto 20px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            background-size: cover;
+            background-position: center;
+            transition: .4s all;
+        }
+
+        .photo-frame:hover {
+            width: 200px;
+            height: 200px;
+            border: 10px solid white;
+            border-radius: 50%;
+            margin: 0 auto 20px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            background-size: cover;
+            background-position: center;
+            transform: scale(1.1);
+            transition: .4s all;
+        }
+
+        .btn {
+            display: inline-block;
+            background: #d23669;
+            color: white;
+            padding: 12px 30px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: bold;
+            margin: 20px 5px;
+            transition: all 0.3s;
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn:hover {
+            background: #a62655;
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .gallery {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 15px;
+            margin: 30px 0;
+        }
+
+        .gallery img {
+            width: 150px;
+            height: 150px;
+            object-fit: cover;
+            border-radius: 10px;
+            transition: all 0.3s;
+            cursor: pointer;
+        }
+
+        .gallery img:hover {
+            transform: scale(1.1);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+        }
+
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            z-index: 100;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .modal-content {
+            max-width: 80%;
+            max-height: 80%;
+        }
+
+        .modal img {
+            max-width: 100%;
+            max-height: 100%;
+            border-radius: 10px;
+        }
+
+        .close {
+            position: absolute;
+            top: 20px;
+            right: 30px;
+            color: white;
+            font-size: 30px;
+            cursor: pointer;
+        }
+
+        .love-meter {
+            width: 100%;
+            height: 30px;
+            background: #f1f1f1;
+            border-radius: 15px;
+            margin: 20px 0;
+            overflow: hidden;
+        }
+
+        .love-progress {
+            height: 100%;
+            width: 100%;
+            background: linear-gradient(90deg, #ff9a9e 0%, #fad0c4 100%);
+            border-radius: 15px;
+            transition: width 1s;
+        }
+
+        .secret-message {
+            opacity: 0;
+            height: 0;
+            overflow: hidden;
+            transition: all 0.5s;
+            background: white;
+            border-radius: 15px;
+            padding: 0 20px;
+        }
+
+        .secret-message.show {
+            opacity: 1;
+            height: auto;
+            padding: 20px;
+            margin-top: 20px;
+        }
+
+        footer {
+            margin-top: 50px;
+            padding: 20px;
+            color: #666;
+        }
+
+        .floating-hearts {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: -1;
+        }
+
+        .heart-shape {
+            position: absolute;
+            font-size: 20px;
+            color: #d23669;
+            opacity: 0;
+            animation: float 6s linear infinite;
+        }
+
+        @keyframes float {
+            0% {
+                transform: translateY(100vh) scale(0);
+                opacity: 0;
+            }
+
+            10% {
+                opacity: 0.7;
+            }
+
+            100% {
+                transform: translateY(-20vh) scale(1);
+                opacity: 0;
+            }
+        }
+
+        /* Responsive */
+        @media (max-width: 600px) {
+            h1 {
+                font-size: 2em;
+            }
+
+            .subtitle {
+                font-size: 1.2em;
+            }
+
+            .photo-frame {
+                width: 150px;
+                height: 150px;
+            }
+
+            .gallery img {
+                width: 100px;
+                height: 100px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <audio src="stay.mp3" autoplay loop controls></audio>
+    <div class="floating-hearts" id="hearts-container"></div>
+
+    <div class="container">
+        <header>
+            <div class="photo-frame" id="main-photo" style="background-image: url('images/1.jpg');">
+            </div>
+            <h1><span class="heart">⭐</span> !Mutlu Yıllar Sevgilim! <span class="heart">❤</span></h1>
+            <p class="subtitle">⭐Bugün senin özel günün ve benim için en özel insansın<span class="heart">❤</span></p>
+        </header>
+
+        <div class="memory-box">
+            <h2>Seni Seviyorum Çünkü...</h2>
+            <p id="reason-text">Bunu sonuna kadar hak ediyorsun.</p>
+            <button class="btn" id="new-reason">Yeni Bir Neden Göster</button>
+        </div>
+
+        <div class="memory-box">
+            <h2>En Sevdiğim Anılarımız</h2>
+            <div class="gallery">
+                <img src="images/2.jpg" alt="Anımız 1">
+                <img src="images/3.jpg" alt="Anımız 2">
+                <img src="images/4.jpg" alt="Anımız 3">
+                <img src="images/5.jpg" alt="Anımız 4">
+                <img src="images/6.jpg" alt="Anımız 5">
+                <img src="images/7.jpg" alt="Anımız 6">
+                <img src="images/8.jpg" alt="Anımız 7">
+                <img src="images/9.jpg" alt="Anımız 8">
+                <img src="images/10.jpg" alt="Anımız 9">
+                <img src="images/11.jpg" alt="Anımız 10">
+                <img src="images/12.jpg" alt="Anımız 11">
+                <img src="images/13.jpg" alt="Anımız 12">
+                <img src="images/14.jpg" alt="Anımız 13">
+                <img src="images/15.jpeg" alt="Anımız 14">
+                <img src="images/16.jpg" alt="Anımız 15">
+                <img src="images/17.jpg" alt="Anımız 16">
+                <img src="images/18.jpg" alt="Anımız 17">
+                <img src="images/19.jpg" alt="Anımız 18">
+                <img src="images/20.jpg" alt="Anımız 19">
+                <img src="images/21.jpg" alt="Anımız 20">
+            </div>
+            <p>Bunlar birlikte yaşadığımız ve yaşayacağımız binlerce anının sadece birkaçı...</p>
+        </div>
+
+        <div class="memory-box">
+            <h2>Senin İçin Bir Şarkı</h2>
+            <div style="margin: 20px 0;">
+
+            </div>
+            <p>Şarkı, tanıdık geldi mi?..</p>
+        </div>
+
+        <div class="memory-box">
+            <h2>Seni Ne Kadar Seviyorum?</h2>
+            <div class="love-meter">
+                <div class="love-progress" id="love-progress"></div>
+            </div>
+            <button class="btn" id="measure-love">Ölçmeye Başla!</button>
+            <div class="secret-message" id="secret-message">
+                <h3>Seni Hep Seviyorum!</h3>
+                <p>Daha yolun başındayız sevgilim. Şu kısacık sürede bile sana olan sevgimi açıklayamıyorsam, o kadar
+                    fazlaysa önümüzdeki yıllarda neler
+                    olucagını merakla bekliyorum. Bir ömür sevicem seni. İyi ki benimsin bir tanem!
+                </p>
+                <p>Bilmem anlatabildim mi?</p>
+            </div>
+        </div>
+
+        <div class="memory-box">
+            <h2><b><i>Sen</i></b> benim her şeyimsin!</h2>
+        <p>Bu birlikte olduğumuz ilk doğum günün, gerçekten özel ve unutulmaz olmasını istiyorum. 
+            Sana ne kadar değer verdiğimi biliyorsun, bana ne kadar değer verdiğini biliyorum. 
+            Elbette bu günde yanımda olmanı çok isterdim fakat elden bir şey gelmez. 
+            <b>455,6km</b> bizim için hiçbir şey sevgilim. Çünkü sevgi her şeyi yener!
+            Sana olan sevgilerimi kelimelerle anlatmak çok zor bu yüzden sadece bunu hissedebildiğini umabilirim.
+            <b><i>Sen</i></b>inle tanıştığımız günden beri içimde hızlanarak büyüyen bir sevgi topu var resmen. En ufak azalma olmadı biliyor musun?
+            Her hareketinde, her sözünde hep daha çok aşık oldum sana. İlişkimizi seviyorum, <b><i>sen</i></b>i çok seviyorum.
+            Aslında biliyor musun, <br><br>
+            <i>Artık çok değil,<br>
+            hep seviyorum <b><i>sen</i></b>i.<br>
+            Bilir misin hep sevmek,<br>
+            çok sevmekten iyi.<br>
+            Çok sevmek anlıktır,<br>
+            hep sevmek daimi.<br>
+            Çok sevip bıkarsın,<br>
+            Hep seveceğim <b><i>sen</i></b>i...<br></i>
+            <br>
+            Bu özel gününde <b><i>sen</i></b>i görmeyi, saçlarınla oynamayı, yanaklarına dokunmayı, gülüşünü duymayı çok isterdim sevgilim.
+            İnanıyorum en kısa zamanda yanıma geri geliceksin ve o anki bakışlarımız, hissettiklerimiz benzersiz olucak.
+            Ayrı kalmak zor ve üzücü evet haklısın ama bir yandan da bu süre sonunda <b><i>sen</i></b>i görmenin heyecanını düşünüyorum, <b><i>sen</i></b>i 
+            hayal ediyorum.
+            Hayallerimde bile <b><i>sen</i></b> varken hiçbir engel duramaz önümde, zaman, mesafe, herhangi hiçbir şey! <b><i>sen</i></b>i hep seviyorum 
+            sevgilim, hep seveceğim... <br>⭐ Minik kelebeğime, kocandan komacan sevgilerle... <span class="heart">❤</span>
+        </p>
+            <button class="btn" id="birthday-wish">⭐Seni Seviyorum❤</button>
+        </div>
+    </div>
+
+    <div class="modal" id="image-modal">
+        <span class="close">&times;</span>
+        <div class="modal-content">
+            <img id="modal-image" src="" alt="">
+        </div>
+    </div>
+
+    <footer>
+        <p>⭐ Minik kelebeğime, kocandan komacan sevgilerle... <span class="heart">❤</span></p>
+        <p>~Y~</p>
+    </footer>
+
+    <script>
+        // Nedenler listesi
+        const reasons = [
+            "Gülünce çok güzelsin.",
+            "Bana çok güzel bakıyorsun.",
+            "Her zaman yanımda olduğunu biliyorum.",
+            "SENSİN!",
+            "Birlikte geçirdiğimiz her an çok özel.",
+            "Beni anlayan tek kişisin.",
+            "Beni seviyorsun.",
+            "Hayatıma anlam katan tek kişisin.",
+            "Beni mutlu ediyorsun.",
+            "Benim için yaratılmışsın.",
+            "Başka şansım yok :)",
+            "Biz biriz!",
+            "En iyisiyiz!",
+            "Seni seviyorum, sadece bu kadar...",
+            "BENİMSİN!",
+            "Beni yargılamıyorsun.",
+            "Yanımda küçük bir kız çocuğu gibisin, belki de minik bir kedicik?",
+            "Bana aşıksın.",
+            "Bana inanıyorsun, gerçekten İNANIYORSUN!",
+            "Bana güveniyorsun, gerçekten GÜVENİYORSUN!",
+            "sapsalim",
+            "Sen benim bir parçamsın."
+        ];
+
+        // Elementler
+        const reasonText = document.getElementById('reason-text');
+        const newReasonBtn = document.getElementById('new-reason');
+        const measureLoveBtn = document.getElementById('measure-love');
+        const loveProgress = document.getElementById('love-progress');
+        const secretMessage = document.getElementById('secret-message');
+        const birthdayWishBtn = document.getElementById('birthday-wish');
+        const modal = document.getElementById('image-modal');
+        const modalImg = document.getElementById('modal-image');
+        const closeBtn = document.querySelector('.close');
+        const galleryImgs = document.querySelectorAll('.gallery img');
+        const heartsContainer = document.getElementById('hearts-container');
+
+        // Yeni neden göster
+        newReasonBtn.addEventListener('click', () => {
+            const randomIndex = Math.floor(Math.random() * reasons.length);
+            reasonText.textContent = reasons[randomIndex];
+
+            // Küçük bir animasyon ekle
+            reasonText.style.transform = 'scale(0.9)';
+            setTimeout(() => {
+                reasonText.style.transform = 'scale(1)';
+            }, 300);
+        });
+
+        // Aşk ölçer
+        measureLoveBtn.addEventListener('click', () => {
+            let progress = 0;
+            const interval = setInterval(() => {
+                progress += 1;
+                loveProgress.style.width = progress + '%';
+
+                if (progress >= 100) {
+                    clearInterval(interval);
+                    setTimeout(() => {
+                        secretMessage.classList.add('show');
+                    }, 500);
+                }
+            }, 30);
+
+            // Butonu devre dışı bırak
+            measureLoveBtn.disabled = true;
+        });
+
+        // Doğum günü dileği
+        birthdayWishBtn.addEventListener('click', () => {
+            createHearts(50);
+            alert('⭐SENII KOMACAAANN SEVIYORUM HAYATIIMM❤');
+        });
+
+        // Galeri resimlerine tıklama
+        galleryImgs.forEach(img => {
+            img.addEventListener('click', () => {
+                modal.style.display = 'flex';
+                modalImg.src = img.src;
+            });
+        });
+
+        // Modalı kapatma
+        closeBtn.addEventListener('click', () => {
+            modal.style.display = 'none';
+        });
+
+        // Dışarı tıklayınca modalı kapat
+        window.addEventListener('click', (e) => {
+            if (e.target === modal) {
+                modal.style.display = 'none';
+            }
+        });
+
+        // Uçan kalpler oluşturma
+        function createHearts(count) {
+            for (let i = 0; i < count; i++) {
+                setTimeout(() => {
+                    const heart = document.createElement('div');
+                    heart.classList.add('heart-shape');
+                    heart.innerHTML = '❤';
+                    heart.style.left = Math.random() * 100 + 'vw';
+                    heart.style.animationDuration = (Math.random() * 3 + 3) + 's';
+                    heartsContainer.appendChild(heart);
+
+                    // Kalpleri temizle
+                    setTimeout(() => {
+                        heart.remove();
+                    }, 6000);
+                }, i * 100);
+            }
+        }
+
+        // Sayfa yüklendiğinde birkaç kalp oluştur
+        window.addEventListener('load', () => {
+            createHearts(10);
+
+            // 10 saniyede bir kalp oluştur
+            setInterval(() => {
+                createHearts(1);
+            }, 10000);
+        });
+
+        // Sayfa başlığını animasyonlu yap
+        let isIncreasing = true;
+        let scale = 1;
+        const heartElement = document.querySelector('.heart');
+
+        setInterval(() => {
+            if (isIncreasing) {
+                scale += 0.01;
+                if (scale >= 1.3) isIncreasing = false;
+            } else {
+                scale -= 0.01;
+                if (scale <= 1) isIncreasing = true;
+            }
+            heartElement.style.transform = `scale(${scale})`;
+        }, 50);
+    </script>
+</body>
+
+</html>
